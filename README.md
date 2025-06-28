@@ -1,121 +1,97 @@
-# 📘 Documentación del Sistema Web – Historias de Usuario, Criterios de Aceptación y Detalles Técnicos
+# 📅 Calendario de Reservas
+
+Sistema web para la selección de rangos de fechas entre usuarios registrados, con autenticación por usuario y contraseña, cuenta de Google o enlace enviado por correo. Ideal para reservar días disponibles sin superposiciones.
+
+## 🚀 Funcionalidades principales
+
+- Registro e inicio de sesión con distintas opciones
+- Selección de fechas en calendario con colores según disponibilidad
+- Visualización de reservas existentes
+- Anonimato para usuarios no registrados
+- Auditoría de acciones
+- Filtros y paginación para las reservas
+
+## 🛠️ Tecnologías utilizadas
+
+- **Frontend**: Next.js + TypeScript + TailwindCSS + shadcn/ui
+- **Backend**: Supabase (PostgreSQL + Auth + Storage)
+- **Emails**: Resend
+- **Tests**: Vitest + Testing Library
+- **Documentación**: Markdown, almacenada en `/issues` y `/docs`
+
+## 📁 Organización de carpetas
+Perfecto, Sebastián. Te dejo a continuación un `README.md` base que explica el propósito del proyecto, sus tecnologías y cómo está organizado, seguido por los comandos para crear los archivos Markdown correspondientes a los issues directamente desde tu entorno local.
 
 ---
 
-## A. Registro e Inicio de Sesión
+### ✅ `README.md` (guardar en la raíz del proyecto)
 
-### Historia A.1 – Registro y Login con Usuario y Contraseña
-**Como** nuevo usuario  
-**Quiero** registrarme con un nombre de usuario y contraseña  
-**Para** poder ingresar al sistema de manera segura
+```markdown
+# 📅 Calendario de Reservas
 
-#### Criterios de Aceptación:
-- Given que soy un nuevo usuario  
-  When completo el formulario de registro  
-  Then el sistema crea mi cuenta y muestra un mensaje de éxito  
-- Given que tengo una cuenta  
-  When ingreso usuario y contraseña correctos  
-  Then accedo sin errores  
-- Given que ingreso credenciales incorrectas  
-  When intento iniciar sesión  
-  Then el sistema muestra mensaje de error
+Sistema web para la selección de rangos de fechas entre usuarios registrados, con autenticación por usuario y contraseña, cuenta de Google o enlace enviado por correo. Ideal para reservar días disponibles sin superposiciones.
 
-#### Criterios Técnicos:
-- Contraseñas de mínimo 8 caracteres
-- No se aplica hash por ahora
-- Hasta 5 intentos fallidos antes de bloquear por 1 hora
-- Se permite múltiples sesiones simultáneas
+## 🚀 Funcionalidades principales
 
----
+- Registro e inicio de sesión con distintas opciones
+- Selección de fechas en calendario con colores según disponibilidad
+- Visualización de reservas existentes
+- Anonimato para usuarios no registrados
+- Auditoría de acciones
+- Filtros y paginación para las reservas
 
-### Historia A.2 – Login con Cuenta de Google
-**Como** usuario  
-**Quiero** iniciar sesión con mi cuenta de Google  
-**Para** evitar recordar otra contraseña  
+## 🛠️ Tecnologías utilizadas
 
-#### Criterios de Aceptación:
-- Given que elijo iniciar sesión con Google  
-  When autorizo el acceso  
-  Then accedo directamente al sistema
+- **Frontend**: Next.js + TypeScript + TailwindCSS + shadcn/ui
+- **Backend**: Supabase (PostgreSQL + Auth + Storage)
+- **Emails**: Resend
+- **Tests**: Vitest + Testing Library
+- **Documentación**: Markdown, almacenada en `/issues` y `/docs`
 
-#### Criterios Técnicos:
-- OAuth 2.0 con scopes mínimos
+## 📁 Organización de carpetas
 
----
+```
+/app/               # Rutas del sistema (Next.js App Router)
+/components/        # Componentes reutilizables
+/lib/               # Lógica de negocio y helpers
+/public/            # Imágenes, íconos, estáticos
+/styles/            # Configuración de Tailwind
+/supabase/          # Esquema, migraciones y funciones de BD
+/emails/            # Templates para correo
+/issues/            # Historias de usuario e issues técnicos en Markdown
+/tests/             # Pruebas unitarias y de integración
+/docs/              # Documentación técnica extendida
+```
 
-### Historia A.3 – Login por Link Email
-**Como** usuario  
-**Quiero** acceder con un link enviado a mi email  
-**Para** no tener que usar una contraseña
+## 📋 Issues y planificación
 
-#### Criterios de Aceptación:
-- Given que ingreso mi email  
-  When recibo el correo y hago clic en el link  
-  Then accedo automáticamente
-
-#### Criterios Técnicos:
-- El link expira a las 2 horas
-- Se usa el servicio Resend para los correos
+Todas las historias de usuario, criterios técnicos y tareas están documentadas como archivos `.md` bajo la carpeta `/issues`.
 
 ---
 
-## B. Selección de Fechas mediante Calendario
+## 🔧 Cómo generar los archivos de issues
 
-### Historia B – Selección de Fechas
-**Como** usuario autenticado  
-**Quiero** elegir un rango de fechas en un calendario  
-**Para** reservar días disponibles sin conflictos
+Podés correr estos comandos en tu terminal desde la raíz del proyecto (requiere `bash`):
 
-#### Criterios de Aceptación:
-- Given que accedí al sistema  
-  When se carga la pantalla  
-  Then veo un calendario para seleccionar fechas  
-- Given que hay días ocupados  
-  When veo el calendario  
-  Then aparecen: días ocupados en rojo, disponibles en verde, selección en amarillo  
-- Given que navego el calendario  
-  When busco fechas  
-  Then puedo elegir desde un mes anterior hasta 24 meses adelante
+```bash
+mkdir -p issues
 
-#### Criterios Técnicos:
-- Renderizado del calendario desde el servidor (SSR) usando Next.js + TypeScript + Tailwind + shadcn/ui
-- Fechas almacenadas en PostgreSQL vía Supabase
-- Validaciones:
-  - No se permiten fechas pasadas
-  - No se permiten fechas solapadas
-  - Solo un usuario puede confirmar un rango de fechas; el sistema bloquea otros intentos en simultáneo
-- Control de concurrencia implementado
-- Se registran logs de selección
+touch issues/01-registro-login-usuario.md
+touch issues/02-login-google.md
+touch issues/03-login-link-email.md
+touch issues/04-seleccion-fechas-calendario.md
+touch issues/05-listado-reservas.md
+touch issues/06-estructura-carpetas.md
+touch issues/07-creacion-tests.md
+touch issues/08-documentacion-tecnica.md
+```
+
+Una vez creados los archivos, podés copiar el contenido correspondiente que ya generamos en cada uno.
 
 ---
 
-## C. Listado de Reservas de Otros Usuarios
+## 🤝 Contribuciones
 
-### Historia C – Visualizar Reservas
-**Como** usuario  
-**Quiero** ver un listado de rangos de fecha elegidos por otros  
-**Para** planificar mi selección sin superposiciones
-
-#### Criterios de Aceptación:
-- Given que estoy autenticado  
-  When accedo a la sección de reservas  
-  Then veo una tabla con columnas: Fecha desde, Fecha hasta, Nombre usuario, Fecha de selección
-
-#### Criterios Técnicos:
-- El listado es visible para todos:
-  - Usuarios no registrados verán nombres anonimizados
-- El listado está ordenado por “Fecha desde”
-- Se implementa paginación y filtros por rango de fechas
-- Backend expone endpoints para filtros y paginación
+Este repositorio está pensado para crecer en etapas. Si vas a colaborar, revisá los issues de `/issues`, seguí la estructura definida y asegurate de mantener los estándares del sistema.
 
 ---
-
-## 🛠️ Otros Detalles Técnicos Globales
-
-- Frontend: Next.js + TypeScript + Tailwind + shadcn/ui
-- Backend: Supabase + PostgreSQL
-- Autenticación: email/password, Google OAuth2, link por email
-- Servicio de correos: Resend
-- Logs de auditoría registrados en tabla separada:
-  - Incluyen login, selección de fechas, etc.
-  - Filtros por usuario, tipo de acción y fecha
