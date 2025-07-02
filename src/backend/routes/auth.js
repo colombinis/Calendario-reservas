@@ -99,6 +99,10 @@ router.post('/register', async (req, res) => {
   }
 });
 
+router.get('/', (req, res) => {
+  res.send('File ok' , );
+});
+
 // Login Endpoint
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;

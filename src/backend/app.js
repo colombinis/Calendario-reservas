@@ -1,3 +1,5 @@
+// Load environment variables from .env file
+require('dotenv').config({ path: require('path').resolve(__dirname, '../../.env') });
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3001;
