@@ -1,6 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { SHAREDCONFIG } from '../../../../sharedConfig';
 
 export default function RegisterPage() {
   const [email, setEmail] = useState('');
@@ -20,7 +23,7 @@ export default function RegisterPage() {
     }
 
     try {
-      const response = await fetch('/api/auth/register', { // Assuming backend is proxied or on same domain
+      const response = await fetch(SHAREDCONFIG.api_auth_register, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

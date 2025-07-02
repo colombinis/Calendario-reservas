@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { SHAREDCONFIG } from '../../../../sharedConfig';
 
 // A simple context for demonstration if we were to handle session globally
 // import { useAuth } from '../context/AuthContext'; // Assume this exists for a real app
@@ -18,7 +19,7 @@ export default function LoginPage() {
     setIsError(false);
 
     try {
-      const response = await fetch('/api/auth/login', { // Assuming backend is proxied or on same domain
+      const response = await fetch(SHAREDCONFIG.api_auth_login, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
