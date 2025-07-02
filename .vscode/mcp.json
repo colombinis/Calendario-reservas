@@ -1,12 +1,4 @@
 {
-  "inputs": [
-    {
-      "type": "promptString",
-      "id": "github_token",
-      "description": "GitHub Personal Access Token",
-      "password": true
-    }
-  ],
   "servers": {
     "github": {
       "command": "docker",
