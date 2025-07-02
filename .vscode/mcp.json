@@ -11,6 +11,15 @@
         "ghcr.io/github/github-mcp-server"
       ],
       "envFile": "${workspaceFolder}/.env"
+    },
+    "playwright": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "mcp/playwright"
+      ]
     }
   }
 }
