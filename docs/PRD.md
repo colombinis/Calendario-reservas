@@ -14,10 +14,9 @@
 - Define how success will be evaluated.
 
 ## 4. User Stories
-| ID  | As a... | I want to... | So that... | Priority | Notes |
-|-----|---------|--------------|------------|----------|-------|
-| 1   |         |              |            |          |       |
-| 2   |         |              |            |          |       |
+[dos]()
+[project documentation](docs/project-doc.md)
+
 
 ## 5. Functional Requirements
 - Bullet points or table of clear requirements derived from user stories.
